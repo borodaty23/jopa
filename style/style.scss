@@ -1,0 +1,568 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+$backgroundColorMain: #121212;
+$backgroundColorBlocks: rgba(255, 255, 255, 0.2);
+$colorLogo: #FDED28;
+$colorWhite4: rgba(255, 255, 255, 0.04);
+$colorWhite8: rgba(255, 255, 255, 0.08);
+$colorWhite20: rgba(255, 255, 255, 0.2);
+$colorWhite60: rgba(255, 255, 255, 0.6);
+$colorWhite80: rgba(255, 255, 255, 0.8);
+$colorWhite96: rgba(255, 255, 255, 0.96);
+
+body {
+    background-color: $backgroundColorMain;
+}
+
+body.lock {
+    overflow: hidden;
+}
+
+.header {
+    padding: 16px 0 24px;
+
+    .container {
+        margin: 0 auto;
+        padding: 0 16px;
+        max-width: 1226px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__logo-link {
+        font-family: "Raleway";
+        font-style: normal;
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 21px;
+        color: $colorLogo;
+        margin: 0 60px 0 0;
+        display: block;
+
+    }
+
+    &__nav {
+        display: flex;
+        align-items: center;
+    }
+
+    &__nav-list {
+        display: flex;
+
+        @media(max-width: 767px) {
+            display: none;
+        }
+    }
+
+    &__nav-list--active {
+        left: 0;
+    }
+
+    &__nav-item {
+        margin: 0 32px 0 0;
+    }
+
+    &__nav-link {
+        color: $colorWhite60;
+    }
+
+    &__login {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 327px;
+        width: 100%;
+
+        @media(max-width: 767px) {
+            justify-content: flex-end;
+        }
+    }
+
+    &__login-try {
+        width: 118px;
+        height: 40px;
+        background-color: $backgroundColorBlocks;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 150%;
+        color: $colorWhite96;
+        margin: 0 12px 0 0;
+
+        @media(max-width: 767px) {
+            display: none;
+        }
+    }
+
+    &__search-box {
+        display: flex;
+        align-items: center;
+        margin: 0 12px 0 0;
+    }
+
+    &__search-img {
+        margin: 0 12px 0 0;
+    }
+
+    &__search {
+        background-color: transparent;
+        border: 0;
+        font-family: 'Open Sans';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 150%;
+        color: $colorWhite96;
+        width: 45px;
+    }
+
+    &__search::placeholder {
+        color: $colorWhite96;
+    }
+
+    &__user {
+        transition: all 0.3s ease 0s;
+
+        @media(max-width: 767px) {
+            display: none;
+        }
+    }
+
+    &__user--active {
+        transition: all 0.3s ease 0s;
+        left: auto;
+    }
+
+    &__user-img {
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+    }
+
+    &__burger {
+        display: none;
+
+        @media(max-width: 767px) {
+            display: block;
+            position: relative;
+            width: 18px;
+            height: 12px;
+            top: 0;
+            left: 0;
+        }
+    }
+
+    &__burger::before,
+    &__burger::after {
+        @media(max-width: 767px) {
+            content: "";
+            background-color: $colorWhite96;
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            left: 0;
+            transition: all 0.3s ease 0s;
+        }
+    }
+
+    &__burger::before {
+        top: 0;
+    }
+
+    &__burger::after {
+        bottom: 0;
+    }
+
+    &__burger--active::before {
+        transform: rotate(45deg);
+        top: 5px;
+    }
+
+    &__burger--active::after {
+        transform: rotate(-45deg);
+        bottom: 5px;
+    }
+
+    &__burger span {
+        @media(max-width: 767px) {
+            position: absolute;
+            background-color: $colorWhite96;
+            width: 100%;
+            height: 2px;
+            top: 5px;
+            transition: all 0.3s ease 0s;
+        }
+    }
+
+    &__burger--active span {
+        transform: scale(0);
+    }
+
+    &__mobile-menu {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 61px;
+        display: none;
+        left: -100%;
+        background-color: $backgroundColorMain;
+        padding: 0 16px;
+        transition: all 0.3s ease 0s;
+        z-index: 1;
+
+        @media(max-width: 767px) {
+            display: block;
+        }
+    }
+
+    &__mobile-menu--active {
+        left: 0;
+    }
+
+    &__mobile-item {
+        margin: 0 0 25px 0;
+    }
+}
+
+.main__tv-channels {
+    .channels-name {
+        padding: 0 0 24px 0;
+
+        .container {
+            margin: 0 auto;
+            padding: 0 16px;
+            max-width: 1226px;
+            width: 100%;
+        }
+
+        &__title {
+            font-family: 'Open Sans';
+            font-style: normal;
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 150%;
+            color: $colorWhite96;
+        }
+
+        &__title span {
+            font-family: 'Open Sans';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 150%;
+            color: $colorWhite60;
+        }
+    }
+
+    .channel {
+        padding-bottom: 39px;
+
+        .container {
+            margin: 0 auto;
+            padding: 0 16px;
+            max-width: 1226px;
+            width: 100%;
+        }
+
+        &__name {
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: 600;
+            font-size: 24px;
+            line-height: 150%;
+            color: $colorWhite96;
+            margin-bottom: 14px;
+        }
+
+        &__description {
+            display: flex;
+            justify-content: space-between;
+
+            @media(max-width: 767px) {
+                display: block;
+            }
+        }
+
+        &__film-info {
+            margin-right: 24px;
+        }
+
+        &__film-window {
+            width: 100%;
+            max-width: 690px;
+            margin-bottom: 24px;
+            position: relative;
+        }
+
+
+        &__film-window::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: linear-gradient(rgba(18, 18, 18, 0.2), rgba(18, 18, 18, 0.8));
+        }
+
+        &__film-img {
+            width: 100%;
+            object-fit: cover;
+        }
+
+        &__film-description {
+            max-width: 588px;
+            width: 100%;
+        }
+
+        &__film-time {
+            font-family: Montserrat;
+            font-style: SemiBold;
+            font-size: 20px;
+            line-height: 30px;
+            color: $colorWhite96;
+            margin-bottom: 24px;
+        }
+
+        &__film-about {
+            font-family: Open Sans;
+            font-style: Regular;
+            font-size: 16px;
+            line-height: 24px;
+            color: $colorWhite96;
+            margin-bottom: 16px;
+        }
+
+        &__program {
+            max-width: 486px;
+            width: 100%;
+        }
+
+        &__dates {
+            display: flex;
+            width: 100%;
+            margin-bottom: 16px;
+        }
+
+        &__date-btn {
+            max-width: 87px;
+            width: 100%;
+            height: 40px;
+            background-color: $colorWhite8;
+            color: $colorWhite60;
+            border: 0;
+            border-radius: 8px;
+            font-family: Montserrat;
+            margin: 0 12px 0 0;
+            font-size: 14px;
+            line-height: 21px;
+            cursor: pointer;
+        }
+
+        &__date-btn:last-child {
+            margin: 0;
+        }
+
+        &__program-description {
+            background-color: $colorWhite8;
+            border-radius: 8px;
+            padding: 24px 32px 4px 24px;
+            height: 344px;
+            overflow-y: scroll;
+            scroll-padding: 5px;
+        }
+
+        &__program-description::-webkit-scrollbar {
+            width: 6px;
+            height: 40px;
+        }
+
+        &__program-description::-webkit-scrollbar-thumb {
+            width: 6px;
+            height: 40px;
+            background-color: $colorWhite20;
+            border-radius: 8px;
+            scroll-padding: 5px;
+        }
+
+        &__program-feature {
+            display: flex;
+            margin-bottom: 24px;
+        }
+
+        &__program-time {
+            margin-right: 16px;
+            font-family: Montserrat;
+            font-size: 16px;
+            line-height: 24px;
+            color: $colorWhite80;
+        }
+
+        &__scene-name {
+            font-family: Montserrat;
+            font-size: 16px;
+            line-height: 24px;
+            color: $colorWhite80;
+        }
+
+        &__scene-genre {
+            font-family: Montserrat;
+            font-size: 14px;
+            line-height: 21px;
+            color: $colorWhite60;
+        }
+    }
+
+    .channels {
+        padding-bottom: 40px;
+
+        .container {
+            margin: 0 auto;
+            padding: 0 16px;
+            max-width: 1226px;
+            width: 100%;
+        }
+
+        &__title {
+            font-family: Montserrat;
+            font-style: SemiBold;
+            font-size: 20px;
+            line-height: 30px;
+            color: $colorWhite96;
+            margin-bottom: 24px;
+        }
+
+        &__slide-img {
+            margin-bottom: 10px;
+        }
+
+        &__slide-text {
+            font-family: Montserrat;
+            font-style: SemiBold;
+            font-size: 16px;
+            line-height: 24px;
+            color: $colorWhite96;
+        }
+
+        &__swiper {
+            overflow: hidden;
+            width: calc(100vw - (100vw - 1226px) / 2);
+        }
+
+        &__swiper .swiper-slide {
+            width: fit-content !important;
+        }
+    }
+
+    .footer {
+        padding: 40px 0 73px;
+
+        .container {
+            margin: 0 auto;
+            padding: 0 16px;
+            max-width: 1226px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+
+            @media(max-width: 767px) {
+                flex-direction: column;
+            }
+        }
+
+        &__nav {
+            margin-bottom: 12px;
+
+            @media(max-width: 767px) {
+                margin-bottom: 16px;
+            }
+        }
+
+        &__nav-lits {
+            display: flex;
+            column-gap: 36px;
+
+            @media(max-width: 767px) {
+                justify-content: center;
+            }
+        }
+
+        &__nav-link {
+            font-family: Open Sans;
+            font-style: Regular;
+            font-size: 16px;
+            line-height: 24px;
+            color: $colorWhite60;
+        }
+
+        &__copyright {
+            font-family: Open Sans;
+            font-style: Regular;
+            font-size: 14px;
+            line-height: 21px;
+            color: $colorWhite96;
+
+            @media(max-width: 767px) {
+                text-align: center;
+            }
+        }
+
+        &__button-block {
+            max-width: 310px;
+            width: 100%;
+            display: flex;
+            column-gap: 12px;
+
+            @media(max-width: 767px) {
+                order: -1;
+                margin: 0 auto 24px;
+            }
+        }
+
+        &__button-google {
+            display: block;
+            max-width: 152px;
+            width: 100%;
+            height: 50px;
+            background-color: $colorWhite4;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        &__button-apple {
+            display: block;
+            max-width: 146px;
+            width: 100%;
+            height: 50px;
+            background-color: $colorWhite4;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+}
